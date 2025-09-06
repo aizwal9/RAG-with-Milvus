@@ -23,7 +23,7 @@ def load_data_into_milvus(text_lines : list[str] ,embedding_dimensions:int):
         data.append({"id":i,"vector":emb_text(line),"text":line})
 
     insert_res = milvus_client.insert(collections_name,data)
-    print(insert_res["insert_count"])
+    return insert_res
 
 def query(question:str) -> list:
     return milvus_client.search(
